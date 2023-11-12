@@ -1,0 +1,12 @@
+[Unit]
+Description=Camera monitor service
+Requires=camdisplay.service
+After=camdisplay.service
+
+[Service]
+EnvironmentFile=/etc/camdisplay
+Type=simple
+ExecStart=/bin/bash ${CAMDISPLAY_ROOT}/scripts/monitor.sh
+
+[Install]
+WantedBy=multi-user.target

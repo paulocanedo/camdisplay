@@ -1,0 +1,18 @@
+[Unit]
+Description=Camera Display Service
+After=graphical.target
+Wants=display-manager.service
+After=display-manager.service
+
+[Service]
+EnvironmentFile=/etc/camdisplay
+#Environment=XAUTHORITY=${CAMDISPLAY_ROOT}/.Xauthority
+Type=simple
+ExecStart=/bin/bash ${CAMDISPLAY_ROOT}/scripts/show.sh
+Restart=always
+RestartSec=10
+User=paulocanedo
+Group=paulocanedo
+
+[Install]
+WantedBy=multi-user.target
